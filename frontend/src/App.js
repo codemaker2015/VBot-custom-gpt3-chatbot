@@ -13,6 +13,12 @@ function App() {
   const [userInput, setUserInput] = useState('')
   const [recording, setRecording] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [messages, setMessages] = useState([
+    {
+      msg: "Hello, How can I help you ?",
+      fromUser: false,
+    }
+  ])
   const bottomRef = useRef(null);
 
   const themes = {
@@ -40,15 +46,6 @@ function App() {
     resetTranscript,
     browserSupportsSpeechRecognition
   } = useSpeechRecognition({ commands });
-
-  const display_msg = "Hello, How can I help you ?"
-
-  const [messages, setMessages] = useState([
-    {
-      msg: display_msg,
-      fromUser: false,
-    }
-  ])
 
   useEffect(() => {
     if (userInput !== '') {
